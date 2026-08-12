@@ -1,9 +1,15 @@
+import os
 import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, flash, g
 
 app = Flask(__name__)
-app.secret_key = 'quicknotes-secret-key-change-in-production'
-DATABASE = 'quicknotes.db'
+
+# Use environment variable for secret key with a fallback
+app.secret_key = os.environ.get('SECRET_KEY', 'quicknotes-secret-key-change-in-production')
+
+# Absolute path to ensure SQLite database works reliably regardless of working directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATABASE = os.path.join(BASE_DIR, 'quicknotes.db')
 
 
 def get_db():
@@ -275,4 +281,5 @@ def settings():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)

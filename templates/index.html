@@ -16,13 +16,6 @@
       --card-hover-border: rgba(99, 102, 241, 0.4);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      
-      /* Light Navbar Variables */
-      --nav-bg: #ffffff;
-      --nav-text: #0f172a;
-      --nav-muted: #64748b;
-      --nav-border: #e2e8f0;
-      
       --accent-blue: #3b82f6;
       --accent-indigo: #6366f1;
       --accent-gradient: linear-gradient(135deg, #3b82f6, #6366f1);
@@ -51,26 +44,16 @@
     .app-viewport {
       width: 100%;
       max-width: 480px;
+      padding: 0 18px;
     }
 
-    /* Light Header Navigation Surface */
-    .light-navbar {
-      background-color: var(--nav-bg);
-      color: var(--nav-text);
-      padding: 12px 18px 16px 18px;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-      margin-bottom: 20px;
-    }
-
-    /* Top Brand Row */
+    /* Top Brand Navigation */
     .top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--nav-border);
+      padding: 18px 0 12px 0;
+      border-bottom: 1px solid var(--card-border);
     }
 
     .brand {
@@ -94,9 +77,8 @@
     }
 
     .brand-name {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 700;
-      color: var(--nav-text);
       letter-spacing: -0.3px;
     }
 
@@ -104,23 +86,23 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: #f1f5f9;
-      border: 1px solid var(--nav-border);
+      background: #1e293b;
+      border: 1px solid var(--card-border);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 600;
-      color: #334155;
+      color: #cbd5e1;
       font-size: 0.9rem;
       cursor: pointer;
     }
 
-    /* Page Title Sub-Navbar */
+    /* Page Header */
     .page-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: 14px;
+      margin: 22px 0 16px 0;
     }
 
     .page-title-group {
@@ -135,15 +117,17 @@
     }
 
     .page-title {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 700;
-      color: var(--nav-text);
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .icon-btn-light {
-      background: #f8fafc;
-      border: 1px solid var(--nav-border);
-      color: var(--nav-muted);
+    .icon-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
       width: 38px;
       height: 38px;
       border-radius: 12px;
@@ -154,15 +138,10 @@
       transition: all 0.2s ease;
     }
 
-    .icon-btn-light:hover {
-      background: #f1f5f9;
-      color: var(--nav-text);
-      border-color: #cbd5e1;
-    }
-
-    /* Main Content Area */
-    .content-area {
-      padding: 0 18px;
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+      border-color: rgba(255, 255, 255, 0.15);
     }
 
     /* Search Box */
@@ -206,6 +185,7 @@
       color: #64748b;
     }
 
+    /* Primary Gradient Button */
     .btn-primary {
       background: var(--accent-gradient);
       color: #ffffff;
@@ -220,12 +200,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 6px;
       white-space: nowrap;
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
       filter: brightness(1.1);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
     }
 
     /* Section Headings */
@@ -250,6 +235,11 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .section-link:hover {
+      opacity: 0.8;
     }
 
     /* Subjects Cards */
@@ -276,6 +266,7 @@
     .subject-card:hover {
       border-color: var(--card-hover-border);
       transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     }
 
     .folder-icon-wrapper {
@@ -313,6 +304,13 @@
       border: 1px solid var(--card-border);
       border-radius: 18px;
       padding: 16px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .note-card:hover {
+      border-color: var(--card-hover-border);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
     }
 
     .note-top {
@@ -329,6 +327,7 @@
       font-weight: 600;
       padding: 4px 10px;
       border-radius: 20px;
+      letter-spacing: 0.2px;
     }
 
     .star-btn {
@@ -336,6 +335,13 @@
       border: none;
       color: #64748b;
       cursor: pointer;
+      display: flex;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .star-btn:hover {
+      color: #facc15;
+      transform: scale(1.1);
     }
 
     .star-btn.active {
@@ -346,12 +352,14 @@
       font-size: 1.05rem;
       font-weight: 600;
       margin-bottom: 6px;
+      color: var(--text-main);
     }
 
     .note-preview {
       font-size: 0.88rem;
       color: var(--text-muted);
       margin-bottom: 16px;
+      line-height: 1.4;
     }
 
     .note-footer {
@@ -379,9 +387,15 @@
       font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    /* Floating Action Button */
+    .btn-edit:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+    }
+
+    /* Floating Action Button (FAB) */
     .fab {
       position: fixed;
       bottom: 24px;
@@ -397,7 +411,13 @@
       justify-content: center;
       box-shadow: 0 10px 25px rgba(99, 102, 241, 0.5);
       cursor: pointer;
+      transition: all 0.25s ease;
       z-index: 100;
+    }
+
+    .fab:hover {
+      transform: scale(1.08) rotate(90deg);
+      box-shadow: 0 14px 30px rgba(99, 102, 241, 0.7);
     }
 
     @media (max-width: 480px) {
@@ -411,120 +431,114 @@
 
   <div class="app-viewport">
     
-    <!-- LIGHT NAVBAR SECTION -->
-    <header class="light-navbar">
-      <!-- Top Brand Row -->
-      <div class="top-bar">
-        <div class="brand">
-          <div class="brand-logo">N</div>
-          <span class="brand-name">NoteNest</span>
-        </div>
-        <div class="profile-avatar" title="User Profile">N</div>
+    <!-- Header -->
+    <header class="top-bar">
+      <div class="brand">
+        <div class="brand-logo">N</div>
+        <span class="brand-name">NoteNest</span>
       </div>
-
-      <!-- Page Sub-Header Row -->
-      <div class="page-header">
-        <div class="page-title-group">
-          <div class="page-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-              <line x1="10" y1="9" x2="8" y2="9"/>
-            </svg>
-          </div>
-          <h1 class="page-title">QuickNotes</h1>
-        </div>
-        <button class="icon-btn-light" aria-label="Settings">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
-            <circle cx="12" cy="12" r="3"/>
-          </svg>
-        </button>
-      </div>
+      <div class="profile-avatar" title="User Profile">N</div>
     </header>
 
-    <!-- DARK CONTENT BODY -->
-    <main class="content-area">
-      <!-- Search Bar -->
-      <div class="search-container">
-        <div class="search-wrapper">
-          <span class="search-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-          </span>
-          <input type="text" class="search-input" placeholder="Search notes by title or content...">
-          <button class="btn-primary">Search</button>
+    <!-- Sub Header -->
+    <div class="page-header">
+      <div class="page-title-group">
+        <div class="page-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <line x1="10" y1="9" x2="8" y2="9"/>
+          </svg>
         </div>
+        <h1 class="page-title">QuickNotes</h1>
+      </div>
+      <button class="icon-btn" aria-label="Settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+      <div class="search-wrapper">
+        <span class="search-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </span>
+        <input type="text" class="search-input" placeholder="Search notes by title or content...">
+        <button class="btn-primary">Search</button>
+      </div>
+    </div>
+
+    <!-- Subjects Section -->
+    <section>
+      <div class="section-head">
+        <h2 class="section-title">Subjects</h2>
+        <a href="#" class="section-link">
+          Manage All (1) 
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
       </div>
 
-      <!-- Subjects Section -->
-      <section>
-        <div class="section-head">
-          <h2 class="section-title">Subjects</h2>
-          <a href="#" class="section-link">
-            Manage All (1) 
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
+      <div class="subjects-grid">
+        <div class="subject-card">
+          <div class="folder-icon-wrapper">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
             </svg>
-          </a>
+          </div>
+          <div class="subject-info">
+            <div class="subject-name">Maths</div>
+            <div class="subject-count">1 note</div>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="subjects-grid">
-          <div class="subject-card">
-            <div class="folder-icon-wrapper">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+    <!-- Recent Notes Section -->
+    <section>
+      <div class="section-head">
+        <h2 class="section-title">Recent Notes</h2>
+      </div>
+
+      <div class="notes-list">
+        <div class="note-card">
+          <div class="note-top">
+            <span class="tag">Maths</span>
+            <button class="star-btn" onclick="this.classList.toggle('active')" aria-label="Favorite">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
               </svg>
-            </div>
-            <div class="subject-info">
-              <div class="subject-name">Maths</div>
-              <div class="subject-count">1 note</div>
-            </div>
+            </button>
+          </div>
+
+          <h3 class="note-title">Home work 1</h3>
+          <p class="note-preview">Empty note...</p>
+
+          <div class="note-footer">
+            <span class="note-date">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              2026-08-12
+            </span>
+            <button class="btn-edit">Edit</button>
           </div>
         </div>
-      </section>
-
-      <!-- Recent Notes Section -->
-      <section>
-        <div class="section-head">
-          <h2 class="section-title">Recent Notes</h2>
-        </div>
-
-        <div class="notes-list">
-          <div class="note-card">
-            <div class="note-top">
-              <span class="tag">Maths</span>
-              <button class="star-btn" onclick="this.classList.toggle('active')" aria-label="Favorite">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                </svg>
-              </button>
-            </div>
-
-            <h3 class="note-title">Home work 1</h3>
-            <p class="note-preview">Empty note...</p>
-
-            <div class="note-footer">
-              <span class="note-date">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                  <line x1="16" y1="2" x2="16" y2="6"/>
-                  <line x1="8" y1="2" x2="8" y2="6"/>
-                  <line x1="3" y1="10" x2="21" y2="10"/>
-                </svg>
-                2026-08-12
-              </span>
-              <button class="btn-edit">Edit</button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
     <!-- Floating Action Button -->
     <button class="fab" aria-label="Add Note">
@@ -537,4 +551,5 @@
   </div>
 
 </body>
-</html>
+  </html>
+  

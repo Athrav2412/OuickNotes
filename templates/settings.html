@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - QuickNotes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
 
+    <header class="app-header">
+        <div class="header-container">
+            <a href="{{ url_for('index') }}" class="back-link">← Home</a>
+            <h1 class="header-title">Settings</h1>
+            <div style="width: 50px;"></div>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <div class="settings-card">
+            <h2>Appearance</h2>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <span class="setting-label">Dark Mode</span>
+                    <span class="setting-desc">Switch between light and dark themes</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-info">
+                    <span class="setting-label">Font Size</span>
+                    <span class="setting-desc">Adjust reading text size</span>
+                </div>
+                <div class="font-size-options">
+                    <button class="font-btn" data-size="small">Small</button>
+                    <button class="font-btn active" data-size="medium">Medium</button>
+                    <button class="font-btn" data-size="large">Large</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-card">
+            <h2>About QuickNotes</h2>
+            <p class="about-text">
+                QuickNotes is a lightweight, mobile-first note-taking web application built with Python Flask and SQLite. It keeps your thoughts organized into subjects without clutter.
+            </p>
+            <div class="app-info-row">
+                <span>Version</span>
+                <strong>1.0.0</strong>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

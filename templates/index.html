@@ -1,104 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickNotes - Modern Note Taking</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A brief description of your website for search engine results.">
+  <title>My Website</title>
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="app-header">
-        <div class="header-container">
-            <a href="{{ url_for('index') }}" class="brand-logo">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                <span>QuickNotes</span>
-            </a>
-            <div class="header-actions">
-                <a href="{{ url_for('settings') }}" class="icon-btn" title="Settings">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                </a>
-            </div>
-        </div>
-    </header>
+  <!-- Header & Navigation -->
+  <header>
+    <div class="logo">MyBrand</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main class="main-container">
-        
-        <!-- Search Section -->
-        <section class="search-section">
-            <form action="{{ url_for('search') }}" method="GET" class="search-box">
-                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <input type="text" name="q" placeholder="Search notes by title or content..." aria-label="Search notes">
-                <button type="submit" class="btn-search">Search</button>
-            </form>
-        </section>
+  <!-- Main Content -->
+  <main>
+    <section id="hero">
+      <h1>Welcome to My Website</h1>
+      <p>This is a modern HTML5 boilerplate to help you start building quickly.</p>
+      <a href="#about" class="btn">Learn More</a>
+    </section>
 
-        <!-- Subjects Summary -->
-        <section class="section-block">
-            <div class="section-header">
-                <h2>Subjects</h2>
-                <a href="{{ url_for('subjects') }}" class="view-all-link">Manage All ({{ subjects|length }}) →</a>
-            </div>
+    <section id="about">
+      <h2>About Us</h2>
+      <p>Add details about your project, product, or portfolio here.</p>
+    </section>
+  </main>
 
-            {% if subjects %}
-                <div class="grid-subjects">
-                    {% for subject in subjects %}
-                        <a href="{{ url_for('subject_detail', subject_id=subject.id) }}" class="subject-card">
-                            <div class="subject-icon">📁</div>
-                            <div class="subject-info">
-                                <span class="subject-name">{{ subject.name }}</span>
-                                <span class="badge-count">{{ subject.note_count }} notes</span>
-                            </div>
-                        </a>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <div class="empty-state">
-                    <p>No subjects yet. Create your first subject to get started!</p>
-                    <a href="{{ url_for('subjects') }}" class="btn btn-primary">+ Add Subject</a>
-                </div>
-            {% endif %}
-        </section>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 MyBrand. All rights reserved.</p>
+  </footer>
 
-        <!-- Recent Notes -->
-        <section class="section-block">
-            <div class="section-header">
-                <h2>Recent Notes</h2>
-            </div>
-
-            {% if recent_notes %}
-                <div class="grid-notes">
-                    {% for note in recent_notes %}
-                        <div class="note-card">
-                            <div class="note-card-header">
-                                <span class="note-subject-tag">{{ note.subject_name }}</span>
-                                <a href="{{ url_for('toggle_favorite', note_id=note.id) }}" class="fav-star {{ 'active' if note.is_favorite }}" title="Toggle Favorite">
-                                    ★
-                                </a>
-                            </div>
-                            <a href="{{ url_for('edit_note', note_id=note.id) }}" class="note-card-body">
-                                <h3 class="note-title">{{ note.title }}</h3>
-                                <p class="note-snippet">{{ note.content[:100] if note.content else 'Empty note...' }}</p>
-                            </a>
-                            <div class="note-card-footer">
-                                <span class="note-date">{{ note.updated_at[:10] }}</span>
-                                <a href="{{ url_for('edit_note', note_id=note.id) }}" class="btn-text">Edit</a>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <div class="empty-state">
-                    <p>No notes written yet.</p>
-                </div>
-            {% endif %}
-        </section>
-
-    </main>
-
-    <!-- Floating Action Button for Quick Add -->
-    <a href="{{ url_for('subjects') }}" class="fab" title="Add Subject or Note">+</a >
-
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <!-- JavaScript File -->
+  <script src="script.js"></script>
 </body>
 </html>

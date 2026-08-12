@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ subject.name }} - QuickNotes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
 
+    <header class="app-header">
+        <div class="header-container">
+            <a href="{{ url_for('subjects') }}" class="back-link">← Subjects</a>
+            <h1 class="header-title">{{ subject.name }}</h1>
+            <a href="{{ url_for('add_note', subject_id=subject.id) }}" class="btn btn-primary btn-sm">+ New Note</a>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        {% if notes %}
+            <div class="grid-notes">
+                {% for note in notes %}
+                    <div class="note-card">
+                        <div class="note-card-header">
+                            <a href="{{ url_for('toggle_favorite', note_id=note.id) }}" class="fav-star {{ 'active' if note.is_favorite }}" title="Toggle Favorite">
+                                ★
+                            </a>
+                            <span class="note-date">{{ note.updated_at[:10] }}</span>
+                        </div>
+                        <a href="{{ url_for('edit_note', note_id=note.id) }}" class="note-card-body">
+                            <h3 class="note-title">{{ note.title }}</h3>
+                            <p class="note-snippet">{{ note.content[:120] if note.content else 'No additional text...' }}</p>
+                        </a>
+                        <div class="note-card-footer">
+                            <a href="{{ url_for('edit_note', note_id=note.id) }}" class="btn btn-secondary btn-sm">Edit</a>
+                            <a href="{{ url_for('delete_note', note_id=note.id) }}" 
+                               class="btn btn-danger-icon delete-confirm"
+                               data-confirm="Delete this note?"
+                               title="Delete Note">
+                                🗑️
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <p>This subject has no notes yet.</p>
+                <a href="{{ url_for('add_note', subject_id=subject.id) }}" class="btn btn-primary">+ Create First Note</a>
+            </div>
+        {% endif %}
+
+    </main>
+
+    <!-- Floating Action Button -->
+    <a href="{{ url_for('add_note', subject_id=subject.id) }}" class="fab" title="Create New Note">+</a >
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

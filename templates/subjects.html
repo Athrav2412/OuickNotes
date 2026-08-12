@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects - QuickNotes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
 
+    <header class="app-header">
+        <div class="header-container">
+            <a href="{{ url_for('index') }}" class="back-link">← Home</a>
+            <h1 class="header-title">Subjects</h1>
+            <button class="btn btn-primary btn-sm" id="openSubjectModal">+ Add</button>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <!-- Add Subject Inline Card / Modal Trigger -->
+        <div class="modal-backdrop" id="subjectModal">
+            <div class="modal-card">
+                <h3>Create New Subject</h3>
+                <form action="{{ url_for('subjects') }}" method="POST" class="form-stack">
+                    <div class="form-group">
+                        <label for="subject_name">Subject Name</label>
+                        <input type="text" id="subject_name" name="name" required placeholder="e.g. Science, Work, Personal" autofocus>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary" id="closeSubjectModal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create Subject</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Subjects List -->
+        {% if subjects %}
+            <div class="subjects-list">
+                {% for subject in subjects %}
+                    <div class="subject-item-card">
+                        <a href="{{ url_for('subject_detail', subject_id=subject.id) }}" class="subject-item-main">
+                            <span class="subject-icon">📁</span>
+                            <div class="subject-details">
+                                <h3 class="subject-title-text">{{ subject.name }}</h3>
+                                <span class="subject-count-sub">{{ subject.note_count }} notes</span>
+                            </div>
+                        </a>
+                        <div class="subject-actions">
+                            <a href="{{ url_for('add_note', subject_id=subject.id) }}" class="btn btn-secondary btn-sm">+ Note</a>
+                            <a href="{{ url_for('delete_subject', subject_id=subject.id) }}" 
+                               class="btn btn-danger-icon delete-confirm" 
+                               data-confirm="Are you sure you want to delete '{{ subject.name }}'? All related notes will be permanently deleted."
+                               title="Delete Subject">
+                                🗑️
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <p>No subjects found. Add a subject to start organizing your notes!</p>
+            </div>
+        {% endif %}
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
